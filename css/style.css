@@ -1,0 +1,275 @@
+/*COMMON*/
+html, body {
+	height: 100%;
+	width: 100%;
+}
+.full {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+/*MENU*/
+.bg {
+	z-index: 0;
+	background-color: red;
+}
+
+.content {
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+}
+
+.bg-chess div {
+	float: left;
+	display: block;
+	width: 50%;
+	height: 50%;
+}
+
+/*.bg-chess div:nth-child(2), .bg-chess div:nth-child(3) {
+	background-color: #313437;
+}*/
+
+.game-title {
+	position: absolute;
+	top: 7%;
+	display: block;
+	width: 50%;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 40px;
+	color: #313437;
+}
+
+.button.play {
+	position: absolute;
+	right: -webkit-calc(25% - 60px);
+	bottom: 18%;
+	font-size: 50px;
+	line-height: 80px;
+	color: #313437;
+	border-color: #313437;
+}
+	.button.play.activated {
+		color: #f8f8f2;
+		background-color: #313437;
+	}
+
+
+/*GAMEBOARD DIRECTIVE*/
+.view-port {
+	position: relative;
+}
+	.view-port .game-row {
+		height: 25%;
+		width: 100%;
+		background-color: #f8f8f2;
+		position: absolute;
+	}
+		.view-port .game-row span {
+			display: inline-block;
+			margin: 0;
+			height: 100%;
+			width: 25%;
+			background-color: #f8f8f2;
+			border: 1px solid #313437;
+		}
+		.view-port .game-row .black {
+			background-color: #313437;
+		}
+		.view-port .game-row .red {
+			background-color: #f1274e;
+		}
+		.view-port .game-row .green {
+			background-color: #a6d627;
+		}
+
+.pause {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+.score {
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	-webkit-transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
+	margin: 0;
+	border-color: #b2b2b2;
+	background: #b2b2b2;
+	color: #f8f8f2;
+	display: inline-block;
+	padding: 0 12px;
+	min-width: 52px;
+	min-height: 47px;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 2px;
+	vertical-align: top;
+	text-align: center;
+	font-size: 26px;
+	line-height: 42px;
+}
+
+/*GAMEOVER*/
+.popup-title {
+	font-size: 22px;
+}
+
+.highscore {
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-size: 50px;
+	padding: 20px 0;
+}
+
+.popup-buttons .button.again {
+	color: #313437;
+	border-color: #313437;
+}
+	.popup-buttons .button.again.activated {
+		color: #f8f8f2;
+		background-color: #313437;
+	}
+
+/*COUNTDOWN*/
+.countdown {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.2);
+}
+
+	.countdown span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, 0);
+		transform: translate(-50%, 0);
+		color: #f8f8f2;
+		font-size: 50px;
+	}
+
+/*ANIMATIONS*/
+@-webkit-keyframes flash {
+	0%, 50%, 100% {
+		opacity: 1;
+	}
+	25%, 75% {
+		opacity: 0.2;
+	}
+}
+
+@keyframes flash {
+	0%, 50%, 100% {
+		opacity: 1;
+	}
+	25%, 75% {
+		opacity: 0.2;
+	}
+}
+
+.flash {
+	-webkit-animation: flash 1s infinite;
+			animation: flash 1s infinite;
+}
+
+
+/*** Tiles ***/
+
+.tile { color:white; padding:15px; box-sizing:border-box; -moz-box-sizing:border-box; }
+		
+flipper {
+    float:left;
+    width:250px;
+    height:250px;
+    margin-right:15px;
+    display:block;
+    perspective:1000;
+    
+    span {
+        color:white;
+    }
+    
+    >div.flipper {
+        float:left;
+        width:100%;
+        height:100%;
+        position:relative;
+        transform-style:preserve-3d;
+        
+        .front, .back {
+            float:left;
+            display:block;
+            width:100%;
+            height:100%;
+            backface-visibility:hidden;
+            position:absolute;
+            top:0;
+            left:0;
+            transform-style:preserve-3d;
+            transition:transform ease 500ms;
+        }
+
+        .front {
+            z-index:2;
+            background:#19489E;
+
+            /* front tile styles go here! */
+        }
+
+        .back {
+            background:#9E1919;
+
+            /* back tile styles go here! */
+        }
+    }
+}
+
+flipper[horizontal] {
+    .front {
+        transform:rotateY(0deg);
+    }
+
+    .back {
+        transform:rotateY(-180deg);
+    }
+
+    div.flipper.flipped {
+        .front {
+            transform:rotateY(180deg);
+        }
+
+        .back {
+            transform:rotateY(0deg);
+        }
+    }
+}
+
+flipper[vertical] {
+    .front {
+        transform:rotateX(0deg);
+    }
+
+    .back {
+        transform:rotateX(-180deg);
+    }
+
+    div.flipper.flipped {
+        .front {
+            transform:rotateX(180deg);
+        }
+
+        .back {
+            transform:rotateX(0deg);
+        }
+    }
+}
