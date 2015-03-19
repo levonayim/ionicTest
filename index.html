@@ -8,8 +8,9 @@
     <title>Tabs Example</title>
 
     <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
     <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
-    <script src="script.js"></script>
 </head>
 
 <body>
@@ -23,7 +24,7 @@
 
 
     <script id="templates/tabs.html" type="text/ng-template">
-        <ion-tabs class="tabs-icon-top tabs-positive">
+        <ion-tabs class="tabs-positive tabs-icon-only">
 
             <ion-tab title="Home" icon="ion-home" href="#/tab/home">
                 <ion-nav-view name="home-tab"></ion-nav-view>
@@ -39,7 +40,10 @@
 
         </ion-tabs>
     </script>
-
+    <script src="script.js"></script>
+    <script src="lib/ionic/js/angular.min.js"></script>
+    <script src="less.min.js"></script>
+    <script src="src/flip.js"></script>
 </body>
 
 </html>
