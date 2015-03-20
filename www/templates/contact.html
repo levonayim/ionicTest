@@ -1,36 +1,72 @@
 <ion-view title="Contact">
         <ion-content>
 
-            <ion-slide-box on-slide-changed="slideHasChanged($index)">
-              <ion-slide>
-                <div class="box blue">
- <!--                <h1>BLUE</h1> -->
-                      <div id="search-bar">
-                        <div class="item item-input-inset">
-                          <label class="item-input-wrapper" id="search-input">
-                            <i class="icon ion-search placeholder-icon"></i>
-                            <input type="text" placeholder="Search" ng-model="query" ng-change="search()">
-                          </label>
-                        </div>
-                      </div>
+    <ion-slide-box on-slide-changed="slideHasChanged($index)">
+      <!--Slide 1-->
+      <ion-slide>
+        <div class="box blue">
+          <div id="search-bar">
+              <div class="item item-input-inset">
+                <label class="item-input-wrapper" id="search-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="text" placeholder="Search" ng-model="query" ng-change="search()">
+                </label>
+              </div>
+            </div>
+            <h1>BLUE</h1>
 
-                      <ion-content id="content" push-search>
-                        <div id="photos" class="clearfix">
-                          <div class="photo" ng-repeat="photo in photos.items">
-                            <img ng-src="{{ photo.media.m }}">
-                          </div>
-                        </div>
-                      </ion-content>
-                </div>
-              </ion-slide>
-              <ion-slide>
-                <div class="box yellow"><h1>YELLOW</h1></div>
-              </ion-slide>
-              <ion-slide>
-                <div class="box pink"><h1>PINK</h1></div>
-              </ion-slide>
-            </ion-slide-box>
+            <!--The Add Button-->
+            <a href="javascript:;" class="button" id="add_new">Add New Note</a>
+            <div id="board"></div>
 
+        </div>
+      </ion-slide>
 
-        </ion-content>
-    </ion-view>
+      <!--Slide 2-->
+      <ion-slide>
+        <div class="box yellow">
+          <h1>YELLOW</h1>
+          <main ng-controller="WeatherForecastCtrl">    
+            <div class="input">       
+              <input type="text" ng-model="city" autofocus placeholder="Weather in..">
+            </div>
+            <h1 ng-show="city">Weather in {{city}}, {{loc.city.country}}</h1>
+            <section class="forecast">
+              <div ng-repeat-start="day in forecast" ng-if="$first" ng-show="city" class="today">
+                <h2>
+                  Today
+                  <br>{{day.weather[0].main}}
+                  <span ng-hide="checked"><br>{{day.temp.day | number: 0}}°C</span>
+                  <span ng-hide="!checked"><br>{{day.temp.day *(9/5)+32 | number: 0}}°F</span>
+                  <br>{{day.humidity}}%
+                  <span ng-hide="checked"><br>{{day.speed | number: 2}} km/h</span>
+                  <span ng-hide="!checked"><br>{{day.speed * 0.621371 | number: 2}} mph</span>
+                </h2>
+              </div>
+              <div ng-repeat-end ng-show="city" ng-if="!first">
+                <h3>
+                  {{day.dt *1000 | date: 'EEEE'}}
+                  <br>{{day.weather[0].main}}
+                  <span ng-hide="checked"><br>{{day.temp.day | number: 0}}°C</span>
+                  <span ng-hide="!checked"><br>{{day.temp.day *(9/5)+32 | number: 0}}°F</span>
+                  <br>{{day.humidity}}%
+                  <span ng-hide="checked"><br>{{day.speed | number: 2}} km/h</span>
+                  <span ng-hide="!checked"><br>{{day.speed * 0.621371 | number: 2}} mph</span>
+                </h3>
+              </div>
+            </section>
+
+          </main> 
+        </div>
+      </ion-slide>
+
+      <!--Slide 3-->
+      <ion-slide>
+        <div class="box pink">
+          <h1>PINK</h1>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    </ion-content>
+</ion-view>
