@@ -10,6 +10,9 @@
     <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
     <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
 </head>
 
@@ -25,25 +28,26 @@
 
     <script id="templates/tabs.html" type="text/ng-template">
         <ion-tabs class="tabs-positive tabs-icon-only">
-
-            <ion-tab title="Home" icon="ion-home" href="#/tab/home">
+            <!--ion-home-->
+            <ion-tab title="Home" icon="ion-android-star-outline" href="#/tab/home">
                 <ion-nav-view name="home-tab"></ion-nav-view>
             </ion-tab>
 
-            <ion-tab title="About" icon="ion-ios-information" href="#/tab/about">
+            <ion-tab title="About" icon="ion-grid" href="#/tab/about">
                 <ion-nav-view name="about-tab"></ion-nav-view>
             </ion-tab>
 
-            <ion-tab title="Contact" icon="ion-ios-world" ui-sref="tabs.contact">
+            <ion-tab title="Contact" icon="ion-ios-photos-outline" ui-sref="tabs.contact">
                 <ion-nav-view name="contact-tab"></ion-nav-view>
             </ion-tab>
 
         </ion-tabs>
     </script>
     <script src="script.js"></script>
-    <script src="lib/ionic/js/angular.min.js"></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js'></script>
     <script src="less.min.js"></script>
     <script src="src/flip.js"></script>
+    <script src="src/weather.js"></script>
 </body>
 
 </html>
