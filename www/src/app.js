@@ -1,21 +1,14 @@
-// Don't Tap The White -
-// author: Piotr Machowski
-// www: http://machowski.co
+// app.js
 
-angular.module('dttw', [
-  //libs
-  'ionic',
-  'ui.router',
+(function() {
+  'use strict';
 
-  //game specific includes
-  'dttw.menu',
-  'dttw.game'
+  angular.module('app', ['onsen'])
 
-  ])
-
-.config(['$urlRouterProvider', function($urlRouterProvider) {
-  //set default view
-  $urlRouterProvider.otherwise('/menu');
-}])
-
-;
+  // OpenWeatherMap API returns temperature in degrees Kelvin.
+  .filter('kelvinToCelsius', function() {
+    return function(kelvin) {
+      return parseFloat(kelvin) - 273.15;
+    };
+  });
+})();
